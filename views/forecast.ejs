@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Test</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+    <script language=javascript> 
+        var url = window.location.protocol;
+    </script> 
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">WeatherApp</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Aujourd'hui <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/previsions">Prévisions</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+      <fieldset>
+        <form action="/previsions" method="post">
+          <div class="input-group mb-3" name="city_choice" id="city_choice">
+            <input type="text" name="city" class="form-control" placeholder="Entrer une ville" aria-label="Entrer une ville" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">Température</button>
+            </div>
+          </div>
+        </form>
+        <% if(weather !== null){ %>
+          <h1><%= city %></h1>
+          <p>Dernière mise à jour: <%= date %></p>
+          <table id="table_week">
+          <tr>
+            <!-- <% week.forEach(function(day, index) { %>
+                    <%= day.date %>
+                <td>
+                    <p><%= day.date%></p>
+                    <!-- <p><%= day1.day.condition.text%></p>
+                    <img src="<%= day1.day.condition.icon %>" alt=""/>
+                    <p><%= day1.day.mintemp_c%><span>&#8451;</span>   <%= day1.day.maxtemp_c%><span>&#8451;</span></p> 
+                </td>    
+            <% }); %> -->
+            <td id="day1">
+                <center>
+                        <p><%= day1.date%></p>
+                        <p><%= day1.day.condition.text%></p>
+                        <img src="<%= day1.day.condition.icon %>" alt=""/>
+                        <p><%= day1.day.mintemp_c%><span>&#8451;</span>   <%= day1.day.maxtemp_c%><span>&#8451;</span></p>
+                </center>
+            </td> 
+            <td id="day2">
+                <center>
+                    <p><%= day2.date%></p>
+                    <p><%= day2.day.condition.text%></p>
+                    <img src="<%= day2.day.condition.icon %>" alt=""/>
+                    <p><%= day2.day.mintemp_c%><span>&#8451;</span>   <%= day2.day.maxtemp_c%><span>&#8451;</span></p>
+                </center>
+            </td>
+            <td id="day3">
+                <center>
+                    <p><%= day3.date%></p>
+                    <p><%= day3.day.condition.text%></p>
+                    <img src="<%= day3.day.condition.icon %>" alt=""/>
+                    <p><%= day3.day.mintemp_c%><span>&#8451;</span>   <%= day3.day.maxtemp_c%><span>&#8451;</span></p>
+                </center>
+            </td>
+            <td id="day4">
+                <center>
+                    <p><%= day4.date%></p>
+                    <p><%= day4.day.condition.text%></p>
+                    <img src="<%= day4.day.condition.icon %>" alt=""/>
+                    <p><%= day4.day.mintemp_c%><span>&#8451;</span>   <%= day4.day.maxtemp_c%><span>&#8451;</span></p>
+                </center>
+            </td>
+            <td id="day5">
+                <center>
+                    <p><%= day5.date%></p>
+                    <p><%= day5.day.condition.text%></p>
+                    <img src="<%= day5.day.condition.icon %>" alt=""/>
+                    <p><%= day5.day.mintemp_c%><span>&#8451;</span>   <%= day5.day.maxtemp_c%><span>&#8451;</span></p>
+                </center>
+            </td>
+          </tr>
+          
+          </table>
+        <% } %>
+
+        <% if(error !== null){ %>
+          <p><%= error %></p>
+        <% } %>
+      </fieldset>
+    </div>
+  </body>
+</html>
